@@ -2,7 +2,7 @@ var postsData = [
   {
     title: 'Introducing Telescope',
     author: 'sacha gerif',
-    url: "http://sachagreif.com/introducing-telescope/"
+    url: 'http://sachagreif.com/introducing-telescope/'
   },
   {
     title: 'Meteor',
@@ -15,6 +15,9 @@ var postsData = [
     url: "http://themeteorbook.com"
   }
 ];
+
 Template.postsList.helpers({
-  posts: postsData
+  posts: function(){
+    return Posts.find();;
+  }
 });
