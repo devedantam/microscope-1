@@ -1,7 +1,11 @@
 <template name="postsList">
 <ul>
-{{#each posts}}
-<li>{{title}}</li>
-{{/each}}
+  {{#if Template.subscriptionReady}}
+    {{#each posts}}
+      <li>{{this.title}}</li>
+      {{/each}}
+  {{else}}
+    <p>Loading...</p>
+    {{/if}}
 </ul>
 </template>

@@ -2,14 +2,15 @@ Template.postItem.helpers({
 
 
   url: function(){
-    return Posts.findOne(this.url);
+    //return Posts.findOne(this.url);
+    return Posts.findOne(this._id);
   },
   title:function(){
-    return Posts.findOne(this.title);
+    return Posts.findOne(this._id);
   },
 
-  domain: function(){
-    return Posts.findOne(this.message);
+  message: function(){
+    return Posts.findOne(this._id);
   }
 
 });

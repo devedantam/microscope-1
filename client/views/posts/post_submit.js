@@ -3,13 +3,32 @@ Template.postSubmit.events({
 
     e.preventDefault();
   //  console.log("template data is"+template.data);
+
+
+    if(!$(e.target).find('[name=url]').val() == "" && !$(e.target).find('[name=title]').val() == "" &&
+   !$(e.target).find('[name=message]').val() == "" )
+  {
     var post = {
       url: $(e.target).find('[name=url]').val(),
       title: $(e.target).find('[name=title]').val(),
       message: $(e.target).find('[name=message]').val()
     };
-    post._id = Posts.insert(post);
-    console.log('inserted and id is '+post._id);
-    FlowRouter.go('/posts/:post._id');
+
+    Meteor.call('post',post, function(error,id){
+      if(error)
+        return alert(error.reason);
+
+      //FlowRouter.go('/posts/' + post._id);
+      console.log("the is is "+id);
+    });
+
+
+    FlowRouter.go('/');
   }
+
+  else {
+    alert('Fill all fields');
+  }
+
+}
 });
